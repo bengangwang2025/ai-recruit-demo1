@@ -68,7 +68,7 @@
                             </video>
                         </div>
                         <div class="video-actions">
-                            <button class="btn btn-primary" onclick="showEvaluationForm('candidate1')">添加企业评价</button>
+                            <button class="btn btn-primary">下载视频</button>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                             </video>
                         </div>
                         <div class="video-actions">
-                            <button class="btn btn-primary" onclick="showEvaluationForm('candidate2')">添加企业评价</button>
+                            <button class="btn btn-primary">下载视频</button>
                         </div>
                     </div>
                 </div>
@@ -170,27 +170,6 @@
                 </div>
             </div>
         </main>
-
-        <!-- 企业评价表单模态框 -->
-        <div id="evaluation-modal" class="modal" aria-hidden="true">
-            <div class="modal-content">
-                <h2>企业评价</h2>
-                <form id="evaluation-form">
-                    <div class="form-group">
-                        <label>评分 (1-100)</label>
-                        <input type="number" min="1" max="100" required>
-                    </div>
-                    <div class="form-group">
-                        <label>评价意见</label>
-                        <textarea required></textarea>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" onclick="closeEvaluationForm()">取消</button>
-                        <button type="submit" class="btn btn-primary">提交评价</button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
         <footer>
             <p>© 2025 视界人才系统</p>
