@@ -40,7 +40,7 @@
         </main>
 
         <!-- 上传状态提示，仅提示上传成功，不显示分析进度 -->
-        <div id="upload-modal" class="modal" aria-hidden="true">
+        <div id="upload-modal" class="modal">
             <div class="modal-content">
                 <h2>视频上传中...</h2>
                 <div class="progress-bar">
@@ -54,6 +54,23 @@
             <p>© 2025 AI招聘匹配系统</p>
         </footer>
     </div>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+    </style>
     <script>
         // 处理视频上传
         function handleUpload(companyId) {
@@ -69,7 +86,13 @@
             const modal = document.getElementById('upload-modal');
             const progressBar = document.getElementById('upload-progress');
             const statusText = document.getElementById('upload-status');
-            modal.setAttribute('aria-hidden', 'false');
+            
+            // 重置进度条和状态
+            progressBar.style.width = '0%';
+            statusText.textContent = '正在上传...';
+            
+            // 显示弹窗
+            modal.classList.add('show');
             
             // 模拟上传进度
             let progress = 0;
@@ -81,7 +104,7 @@
                     clearInterval(interval);
                     statusText.textContent = '上传成功！';
                     setTimeout(() => {
-                        modal.setAttribute('aria-hidden', 'true');
+                        modal.classList.remove('show');
                         // 重置上传控件
                         fileInput.value = '';
                         alert('视频上传成功！我们会尽快为您进行分析。');
