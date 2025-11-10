@@ -16,60 +16,157 @@
         </header>
 
         <main class="profile-content">
-            <div class="profile-card">
-                <div class="basic-info">
-                    <h2>基本信息</h2>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <label>姓名</label>
-                            <p>张三</p>
+            <div class="candidate-filters">
+                <select id="sortBy" class="filter-select">
+                    <option value="score">按综合评分排序</option>
+                    <option value="professional">按专业能力排序</option>
+                    <option value="communication">按沟通能力排序</option>
+                </select>
+            </div>
+
+            <div class="candidates-grid">
+                <div class="profile-card">
+                    <div class="basic-info">
+                        <h2>张三</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>年龄</label>
+                                <p>28岁</p>
+                            </div>
+                            <div class="info-item">
+                                <label>评分排名</label>
+                                <p>1/8</p>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <label>年龄</label>
-                            <p>28岁</p>
+                    </div>
+
+                    <div class="ai-analysis">
+                        <div class="score-section">
+                            <div class="score-item">
+                                <div class="score">92</div>
+                                <label>综合评分</label>
+                            </div>
+                            <div class="score-item">
+                                <div class="score">95</div>
+                                <label>专业能力</label>
+                            </div>
+                            <div class="score-item">
+                                <div class="score">88</div>
+                                <label>沟通能力</label>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <label>应聘职位</label>
-                            <p>高级前端工程师</p>
+                        <div class="evaluation">
+                            <p>候选人展现出优秀的技术功底和清晰的表达能力。沟通风格专业且富有亲和力。</p>
+                        </div>
+                    </div>
+
+                    <div class="video-section">
+                        <div class="video-container">
+                            <video controls class="candidate-video">
+                                <source src="mock-video.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                        </div>
+                        <div class="video-actions">
+                            <button class="btn btn-primary" onclick="showEvaluationForm('candidate1')">添加企业评价</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="ai-analysis">
-                    <h2>AI 分析结果</h2>
-                    <div class="score-section">
-                        <div class="score-item">
-                            <div class="score">92</div>
-                            <label>综合评分</label>
-                        </div>
-                        <div class="score-item">
-                            <div class="score">95</div>
-                            <label>专业能力</label>
-                        </div>
-                        <div class="score-item">
-                            <div class="score">88</div>
-                            <label>沟通能力</label>
+                <div class="profile-card">
+                    <div class="basic-info">
+                        <h2>李四</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>年龄</label>
+                                <p>26岁</p>
+                            </div>
+                            <div class="info-item">
+                                <label>评分排名</label>
+                                <p>2/8</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="evaluation">
-                        <h3>AI评价</h3>
-                        <p>候选人展现出优秀的技术功底和清晰的表达能力。在视频中展示了对前端技术的深入理解，
-                           并能够流畅地阐述复杂的技术概念。沟通风格专业且富有亲和力，这表明其具备良好的团队协作潜力。</p>
+
+                    <div class="ai-analysis">
+                        <div class="score-section">
+                            <div class="score-item">
+                                <div class="score">88</div>
+                                <label>综合评分</label>
+                            </div>
+                            <div class="score-item">
+                                <div class="score">90</div>
+                                <label>专业能力</label>
+                            </div>
+                            <div class="score-item">
+                                <div class="score">85</div>
+                                <label>沟通能力</label>
+                            </div>
+                        </div>
+                        <div class="evaluation">
+                            <p>技术基础扎实，表达清晰。在团队协作方面展现出良好潜力。</p>
+                        </div>
+                    </div>
+
+                    <div class="video-section">
+                        <div class="video-container">
+                            <video controls class="candidate-video">
+                                <source src="mock-video.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                        </div>
+                        <div class="video-actions">
+                            <button class="btn btn-primary" onclick="showEvaluationForm('candidate2')">添加企业评价</button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="video-section">
-                    <h2>视频展示</h2>
-                    <div class="video-player">
-                        <video id="candidate-video" controls>
-                            <source src="mock-video.mp4" type="video/mp4">
-                            您的浏览器不支持视频播放。
-                        </video>
+                <div class="profile-card">
+                    <div class="basic-info">
+                        <h2>王五</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>年龄</label>
+                                <p>30岁</p>
+                            </div>
+                            <div class="info-item">
+                                <label>评分排名</label>
+                                <p>3/8</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="actions">
-                    <button class="btn btn-primary" onclick="showEvaluationForm()">添加企业评价</button>
+                    <div class="ai-analysis">
+                        <div class="score-section">
+                            <div class="score-item">
+                                <div class="score">85</div>
+                                <label>综合评分</label>
+                            </div>
+                            <div class="score-item">
+                                <div class="score">88</div>
+                                <label>专业能力</label>
+                            </div>
+                            <div class="score-item">
+                                <div class="score">82</div>
+                                <label>沟通能力</label>
+                            </div>
+                        </div>
+                        <div class="evaluation">
+                            <p>经验丰富，技术视野开阔。团队协作意识强，善于解决问题。</p>
+                        </div>
+                    </div>
+
+                    <div class="video-section">
+                        <div class="video-container">
+                            <video controls class="candidate-video">
+                                <source src="mock-video.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                        </div>
+                        <div class="video-actions">
+                            <button class="btn btn-primary" onclick="showEvaluationForm('candidate3')">添加企业评价</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -96,7 +193,7 @@
         </div>
 
         <footer>
-            <p>© 2025 AI招聘匹配系统</p>
+            <p>© 2025 视界人才系统</p>
         </footer>
     </div>
     <script src="app.js"></script>

@@ -1,15 +1,17 @@
 
 :root {
-    --primary: #4A90E2;
-    --secondary: #6c757d;
-    --success: #28a745;
-    --danger: #dc3545;
-    --background: #f8f9fa;
-    --card: #ffffff;
-    --text: #212529;
-    --text-light: #6c757d;
-    --border: #dee2e6;
-    --shadow: rgba(0,0,0,0.1);
+    --bg: #1a1a1a;
+    --card: #242424;
+    --primary: #0066cc;
+    --primary-hover: #0052a3;
+    --secondary: #666666;
+    --text: #ffffff;
+    --text-light: #999999;
+    --border: #333333;
+    --shadow: rgba(0, 0, 0, 0.2);
+    --success: #2d8a47;
+    --danger: #cc3333;
+    --modal-bg: rgba(0, 0, 0, 0.8);
 }
 
 * {
@@ -22,13 +24,27 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text);
-    background: var(--background);
+    background: var(--bg);
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+header {
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 header {
@@ -49,13 +65,16 @@ header h1 {
 
 .btn {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 3px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 14px;
     cursor: pointer;
     border: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    color: var(--text);
+    letter-spacing: 0.3px;
 }
 
 .btn-primary {
@@ -63,9 +82,19 @@ header h1 {
     color: white;
 }
 
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
 .btn-secondary {
-    background: var(--secondary);
-    color: white;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-light);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text);
+    color: var(--text);
 }
 
 .btn:hover {
@@ -163,6 +192,114 @@ button.primary {
   background: linear-gradient(90deg,var(--accent),#66b8ff);
   width: 0%;
   transition: width 0.3s ease;
+}
+
+/* 候选人列表页面样式 */
+.candidate-filters {
+  margin-bottom: 24px;
+}
+
+.filter-select {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.profile-card {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.profile-card .basic-info {
+  margin-bottom: 16px;
+}
+
+.profile-card .basic-info h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.profile-card .info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.profile-card .score-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.profile-card .score-item {
+  text-align: center;
+}
+
+.profile-card .score {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.profile-card .evaluation {
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.profile-card .actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* 视频模态框样式 */
+.video-section {
+  margin: 16px -20px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.video-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.candidate-video {
+  width: 100%;
+  max-height: 200px;
+  background: #000;
+  display: block;
+  border-radius: 4px;
+}
+
+.video-actions {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.video-actions .btn {
+  width: 100%;
+  white-space: normal;
+  height: auto;
+  min-height: 48px;
+  line-height: 1.3;
 }
 
 #overall-progress {

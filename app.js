@@ -33,50 +33,52 @@ function randInt(min, max) {
 // 处理视频上传
 function handleUpload(companyId) {
     const fileInput = document.getElementById(`video-${companyId}`);
-    const file = fileInput.files[0];
+    let file = fileInput.files[0];
     
     if (!file) {
-        alert('请先选择视频文件');
-        return;
+        alert('未选择视频文件，将使用演示视频进行演示');
+        // 创建一个虚拟的文件名用于演示
+        file = {
+            name: '自我介绍视频_演示.mp4',
+            size: 15000000 // 15MB
+        };
     }
 
-    // 显示分析弹窗
-    const modal = document.getElementById('analysis-modal');
-    modal.setAttribute('aria-hidden', 'false');
+    // 显示上传弹窗
+    const modal = document.getElementById('upload-modal');
+    modal.classList.add('show');
     
-    // 模拟分析进度
+    // 模拟上传进度
     let progress = 0;
-    const progressBar = document.getElementById('progress');
-    const statusText = document.getElementById('analysis-status');
+    const progressBar = document.getElementById('upload-progress');
+    const statusText = document.getElementById('upload-status');
+    
+    // 重置进度条和状态
+    progressBar.style.width = '0%';
+    statusText.textContent = '正在上传...';
     
     const interval = setInterval(() => {
         progress += 5;
         progressBar.style.width = `${progress}%`;
         
-        if (progress < 30) {
-            statusText.textContent = '正在处理视频...';
-        } else if (progress < 60) {
-            statusText.textContent = '分析表情和语音...';
-        } else if (progress < 90) {
-            statusText.textContent = '生成AI评估报告...';
-        }
-        
         if (progress >= 100) {
             clearInterval(interval);
-            statusText.textContent = '分析完成！';
+            statusText.textContent = '上传成功！';
             setTimeout(() => {
-                modal.setAttribute('aria-hidden', 'true');
-                // 模拟跳转到结果页面
-                window.location.href = 'profile.html?job=' + companyId;
+                modal.classList.remove('show');
+                // 重置上传控件
+                fileInput.value = '';
+                alert('视频上传成功！我们会尽快为您进行分析并通知您结果。');
             }, 1000);
         }
     }, 100);
 }
 
 // 处理企业评价表单
-function showEvaluationForm() {
+function showEvaluationForm(candidateId) {
     const modal = document.getElementById('evaluation-modal');
     modal.setAttribute('aria-hidden', 'false');
+    modal.dataset.candidateId = candidateId;
 }
 
 function closeEvaluationForm() {
@@ -89,11 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 如果在个人页面，初始化文件输入框的监听
     const fileInputs = document.querySelectorAll('input[type="file"]');
     fileInputs.forEach(input => {
+        const button = input.nextElementSibling;
+        
+        // 初始状态设置
+        button.textContent = '上传视频';
+        
+        // 文件选择改变时的处理
         input.addEventListener('change', () => {
-            const button = input.nextElementSibling;
             if (input.files.length > 0) {
-                button.textContent = '开始分析';
-            } else {
                 button.textContent = '上传视频';
             }
         });
@@ -112,7 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (evaluationForm) {
         evaluationForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('评价提交成功！');
+            const modal = document.getElementById('evaluation-modal');
+            const candidateId = modal.dataset.candidateId;
+            alert('已成功添加对候选人的评价！');
             closeEvaluationForm();
         });
     }
