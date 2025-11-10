@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频上传 - AI招聘匹配系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>视频上传</h1>
+            <nav>
+                <a href="index.html">返回首页</a>
+            </nav>
+        </header>
+
+        <main class="jobs-list">
+            <div class="job-card">
+                <div class="job-description">
+                    <h3>A公司 - 高级前端工程师</h3>
+                    <p>我们正在寻找一位经验丰富的前端工程师。理想候选人应该精通现代前端框架，有良好的团队协作能力。</p>
+                </div>
+                <div class="upload-section">
+                    <input type="file" id="video-a" accept="video/*" class="file-input">
+                    <button onclick="handleUpload('a')" class="btn btn-primary">上传视频</button>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-description">
+                    <h3>B公司 - 产品经理</h3>
+                    <p>寻找具有创新思维的产品经理，能够带领团队打造优秀的产品体验。</p>
+                </div>
+                <div class="upload-section">
+                    <input type="file" id="video-b" accept="video/*" class="file-input">
+                    <button onclick="handleUpload('b')" class="btn btn-primary">上传视频</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 上传状态提示，仅提示上传成功，不显示分析进度 -->
+        <div id="upload-modal" class="modal" aria-hidden="true">
+            <div class="modal-content">
+                <h2>视频上传中...</h2>
+                <div class="progress-bar">
+                    <div id="upload-progress" class="progress-fill"></div>
+                </div>
+                <p id="upload-status">正在上传...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 AI招聘匹配系统</p>
+        </footer>
+    </div>
+    <script>
+        // 处理视频上传
+        function handleUpload(companyId) {
+            const fileInput = document.getElementById(`video-${companyId}`);
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('请先选择视频文件');
+                return;
+            }
+
+            // 显示上传弹窗
+            const modal = document.getElementById('upload-modal');
+            const progressBar = document.getElementById('upload-progress');
+            const statusText = document.getElementById('upload-status');
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // 模拟上传进度
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    statusText.textContent = '上传成功！';
+                    setTimeout(() => {
+                        modal.setAttribute('aria-hidden', 'true');
+                        // 重置上传控件
+                        fileInput.value = '';
+                        alert('视频上传成功！我们会尽快为您进行分析。');
+                    }, 1000);
+                }
+            }, 100);
+        }
+
+        // 初始化文件输入框监听
+        document.addEventListener('DOMContentLoaded', () => {
+            const fileInputs = document.querySelectorAll('input[type="file"]');
+            fileInputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    const button = input.nextElementSibling;
+                    if (input.files.length > 0) {
+                        button.textContent = '上传视频';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

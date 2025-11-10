@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业查看 - AI招聘匹配系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>企业查看页面</h1>
+            <nav>
+                <a href="index.html">返回首页</a>
+            </nav>
+        </header>
+
+        <main class="enterprise-jobs">
+            <div class="job-stats">
+                <div class="job-item">
+                    <div class="job-info">
+                        <h3>高级前端工程师</h3>
+                        <p>待分析：3人</p>
+                        <p>已分析：7人</p>
+                        <div class="analysis-status">
+                            <div class="status-bar">
+                                <div class="status-fill" style="width: 70%"></div>
+                            </div>
+                            <span>AI分析进度: 70%</span>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="window.location.href='profile.html?job=frontend'">查看分析结果</button>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-info">
+                        <h3>产品经理</h3>
+                        <p>待分析：2人</p>
+                        <p>已分析：6人</p>
+                        <div class="analysis-status">
+                            <div class="status-bar">
+                                <div class="status-fill" style="width: 75%"></div>
+                            </div>
+                            <span>AI分析进度: 75%</span>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="window.location.href='profile.html?job=pm'">查看分析结果</button>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-info">
+                        <h3>UI设计师</h3>
+                        <p>待分析：4人</p>
+                        <p>已分析：8人</p>
+                        <div class="analysis-status">
+                            <div class="status-bar">
+                                <div class="status-fill" style="width: 66%"></div>
+                            </div>
+                            <span>AI分析进度: 66%</span>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="window.location.href='profile.html?job=ui'">查看分析结果</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 AI招聘匹配系统</p>
+        </footer>
+    </div>
+    <script>
+        // 这里可以添加定时刷新分析进度的逻辑
+        function refreshAnalysisStatus() {
+            // 模拟从后端获取最新的分析进度
+            console.log('刷新分析进度...');
+        }
+        
+        // 每30秒刷新一次进度
+        setInterval(refreshAnalysisStatus, 30000);
+    </script>
+</body>
+</html>

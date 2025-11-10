@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>候选人详情 - AI招聘匹配系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>候选人详情</h1>
+            <nav>
+                <a href="enterprise.html">返回企业页面</a>
+            </nav>
+        </header>
+
+        <main class="profile-content">
+            <div class="profile-card">
+                <div class="basic-info">
+                    <h2>基本信息</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>姓名</label>
+                            <p>张三</p>
+                        </div>
+                        <div class="info-item">
+                            <label>年龄</label>
+                            <p>28岁</p>
+                        </div>
+                        <div class="info-item">
+                            <label>应聘职位</label>
+                            <p>高级前端工程师</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-analysis">
+                    <h2>AI 分析结果</h2>
+                    <div class="score-section">
+                        <div class="score-item">
+                            <div class="score">92</div>
+                            <label>综合评分</label>
+                        </div>
+                        <div class="score-item">
+                            <div class="score">95</div>
+                            <label>专业能力</label>
+                        </div>
+                        <div class="score-item">
+                            <div class="score">88</div>
+                            <label>沟通能力</label>
+                        </div>
+                    </div>
+                    <div class="evaluation">
+                        <h3>AI评价</h3>
+                        <p>候选人展现出优秀的技术功底和清晰的表达能力。在视频中展示了对前端技术的深入理解，
+                           并能够流畅地阐述复杂的技术概念。沟通风格专业且富有亲和力，这表明其具备良好的团队协作潜力。</p>
+                    </div>
+                </div>
+
+                <div class="video-section">
+                    <h2>视频展示</h2>
+                    <div class="video-player">
+                        <video id="candidate-video" controls>
+                            <source src="mock-video.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="showEvaluationForm()">添加企业评价</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 企业评价表单模态框 -->
+        <div id="evaluation-modal" class="modal" aria-hidden="true">
+            <div class="modal-content">
+                <h2>企业评价</h2>
+                <form id="evaluation-form">
+                    <div class="form-group">
+                        <label>评分 (1-100)</label>
+                        <input type="number" min="1" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label>评价意见</label>
+                        <textarea required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeEvaluationForm()">取消</button>
+                        <button type="submit" class="btn btn-primary">提交评价</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 AI招聘匹配系统</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
