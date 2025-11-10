@@ -112,17 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // 这里可以根据jobId加载对应的候选人数据
     }
 
-    // 如果存在评价表单，添加提交处理
-    const evaluationForm = document.getElementById('evaluation-form');
-    if (evaluationForm) {
-        evaluationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const modal = document.getElementById('evaluation-modal');
-            const candidateId = modal.dataset.candidateId;
-            alert('已成功添加对候选人的评价！');
-            closeEvaluationForm();
+    // 初始化视频下载功能
+    document.querySelectorAll('.video-actions .btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            alert('视频文件开始下载...');
         });
-    }
+    });
 });
 
 function generateResult(filename) {
